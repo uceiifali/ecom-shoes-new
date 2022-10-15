@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import {
+  Cart,
+  FlexContent,
+  Footer,
+  Hero,
+  Navbar,
+  Sales,
+  Stories,
+} from "./Components";
+import {
+  heroapi,
+  toprateslaes,
+  popularsales,
+  highlight,
+  sneaker,
+  story,
+  footerAPI,
+} from "./data/data";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Cart />
+      <main className="flex flex-col gap-16 relative  ">
+        <Hero heroapi={heroapi} />
+        <Sales endpoint={popularsales} ifExists />
+        <FlexContent endpoint={highlight} ifExists />
+        <Sales endpoint={toprateslaes} />
+        <FlexContent endpoint={sneaker} />
+        <Stories story={story} />
+        <Footer footerAPI={footerAPI} />
+      </main>
+    </>
   );
 }
 
